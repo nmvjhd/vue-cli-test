@@ -1,9 +1,11 @@
 <template>
   <div id="app">
-    <!--<img src="./assets/logo.png">-->
+    <img src="./assets/logo.png">
     <div class="top-controls">
       <button @click="back">后退</button>
       <button @click="forward">前进</button>
+      <button @click="gotoTodoList">TodoList2</button>
+      <button @click="gotoHello">Hello2</button>
     </div>
     <p>
       <router-link to="/todo-list">TodoList</router-link>
@@ -17,11 +19,16 @@ export default {
   name: 'app',
   methods: {
     back() {
-      console.log(this.router);
-      this.router.go(-1);
+      this.$router.go(-1);
     },
     forward() {
-      this.router.go(1);
+      this.$router.go(1);
+    },
+    gotoTodoList() {
+      this.$router.push('/todo-list');
+    },
+    gotoHello() {
+      this.$router.push('/');
     },
   },
 };

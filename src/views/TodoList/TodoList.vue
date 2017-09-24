@@ -19,8 +19,8 @@
 </template>
 
 <script>
+  import TodoListData from './DataProvider';
   import TodoItem from './TodoItem';
-  import TodoListData from '../store/TodoList';
 
   export default{
     components: { TodoItem },

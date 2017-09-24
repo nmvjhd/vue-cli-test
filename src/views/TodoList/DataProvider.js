@@ -29,6 +29,7 @@ class TodoList {
       name,
       state: 1,
     });
+    return this.get();
   }
   del(id) {
     this.items = this.items.filter(item => item.id !== id);
