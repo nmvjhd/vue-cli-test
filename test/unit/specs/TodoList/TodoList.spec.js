@@ -44,8 +44,16 @@ describe('TodoList', () => {
   });
 
   describe('Network', () => {
-    it('get list', () => {
-      expect(getTodoList()).toBeA('Array');
+    it('get list', async () => {
+      // getTodoList().then((list) => {
+      //   expect(list).to.be.a('array');
+      //   done();
+      // }, (err) => {
+      //   done(err);
+      // });
+      const list = await getTodoList();
+      expect(list).to.be.a('array')
+        .to.have.lengthOf(2);
     });
   });
 });

@@ -1,15 +1,43 @@
 /**
  * Created by Administrator on 2017/9/25.
  */
-import $ from 'jquery';
 
 export function getTodoList() {
+  /* eslint-disable */
   return new Promise((resolve, reject) => {
-    const url = 'https://api.github.com/repos/holoto/color-scheme/subscribers';
-    return $.get(url);
+    setTimeout(() => {
+      resolve([
+        {
+          id: 1,
+          name: '张三',
+          state: 1,
+        },
+        {
+          id: 2,
+          name: '李四',
+          state: 1,
+        },
+      ]);
+    }, 1000);
   });
 }
 
-export function list2() {
-  // TODO:
+export function getTodoList2() {
+  /* eslint-disable */
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve([
+        {
+          id: 1,
+          name: '张三',
+          state: 1,
+        },
+        {
+          id: 2,
+          name: '李四',
+          state: 1,
+        },
+      ]);
+    }, 1000);
+  });
 }
