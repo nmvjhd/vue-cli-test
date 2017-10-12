@@ -6,10 +6,6 @@ import TodoList from '@/views/TodoList/TodoList';
 import DataProvider from '@/views/TodoList/DataProvider';
 import { getTodoList } from '@/views/TodoList/Interface';
 
-function add(a, b) {
-  return a + b;
-}
-
 describe('TodoList', () => {
   describe('Component', () => {
     let vm = null;
@@ -31,9 +27,6 @@ describe('TodoList', () => {
           expect(vm.$el.querySelectorAll('.todo-list .data-list li').length).to.equal(2);
         });
       });
-    });
-    it('should return sum of a and b', () => {
-      expect(add(10, 20)).to.equal(33);
     });
   });
 

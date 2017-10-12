@@ -1,32 +1,31 @@
-// import Vue from 'vue';
-// import Hello from '@/components/Hello';
-// // const Hello = require('inject-loader!@/components/Hello');
-//
-// describe('Hello.vue', () => {
-//   it('should render correct contents', () => {
-//     const Constructor = Vue.extend(Hello);
-//     const vm = new Constructor().$mount();
-//     expect(vm.$el.querySelector('.hello h1').textContent)
-//       .to.equal('Welcome to Your Vue.js App');
-//   });
-// });
+import Vue from 'vue';
+import Hello from '@/components/Hello';
+import Hello2 from '@/components/Hello2';
 
-import MockObj from 'inject-loader!../../../src/views/TodoList/mockTest';
+function renderComponentInVDOM(component, propsData) {
+  const Constructor = Vue.extend(component);
+  const vm = new Constructor({
+    propsData,
+  }).$mount();
+  return vm.$el;
+}
 
-describe('mock', () => {
-  let mockObj;
-  before(() => {
-    mockObj = MockObj({
-      './mockObj': {
-        aaa: 'ccc',
-        ccc: () => 'fn2ccc',
-      },
+describe('Hello', () => {
+  it('should render correct contents', () => {
+    const $el = renderComponentInVDOM(Hello, {
+      msg: 'welcome',
     });
+    expect($el.querySelector('.hello h1').textContent).to.equal('welcome');
+    expect($el.querySelector('.hello h2').textContent).to.equal('welcome111');
   });
+});
 
-  it('mock aaa', () => {
-    console.log(mockObj);
-    expect(mockObj.aaa).to.equal('ccc');
-    expect(mockObj.ccc()).to.equal('fnccc');
+describe('Hello2', () => {
+  it('should render correct contents', () => {
+    const $el = renderComponentInVDOM(Hello2, {
+      msg: 'welcome',
+    });
+    expect($el.querySelector('.hello2 h1').textContent).to.equal('welcome');
+    expect($el.querySelector('.hello2 h2').textContent).to.equal('welcome111');
   });
 });

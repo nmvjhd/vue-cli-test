@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <h2>{{ msg2 }}</h2>
     <h2>Essential Links</h2>
     <ul>
       <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
@@ -23,11 +24,17 @@
 <script>
 export default {
   name: 'hello',
-  data() {
-    return {
-      msg: 'Welcome to Your Vue.js App',
-    };
+  props: ['msg'],
+  computed: {
+    msg2() {
+      return `${this.msg}111`;
+    },
   },
+//  data() {
+//    return {
+//      msg: 'Welcome to Your Vue.js App',
+//    };
+//  },
 };
 </script>
 
