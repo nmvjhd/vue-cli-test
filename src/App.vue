@@ -6,11 +6,14 @@
       <button @click="forward">前进</button>
       <button @click="gotoTodoList">TodoList2</button>
       <button @click="gotoHello">Hello2</button>
+      <button @click="plusCount">++</button>
+      <button @click="minusCount">--</button>
     </div>
     <p>
       <router-link to="/todo-list">TodoList</router-link>
     </p>
     <router-view></router-view>
+    <div>{{ count }}</div>
   </div>
 </template>
 
@@ -29,6 +32,17 @@ export default {
     },
     gotoHello() {
       this.$router.push('/');
+    },
+    plusCount() {
+      this.$store.commit('increment');
+    },
+    minusCount() {
+      this.$store.commit('decrement');
+    },
+  },
+  computed: {
+    count() {
+      return this.$store.state.count;
     },
   },
 };

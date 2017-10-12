@@ -1,14 +1,7 @@
 import Vue from 'vue';
 import Hello from '@/components/Hello';
 import Hello2 from '@/components/Hello2';
-
-function renderComponentInVDOM(component, propsData) {
-  const Constructor = Vue.extend(component);
-  const vm = new Constructor({
-    propsData,
-  }).$mount();
-  return vm.$el;
-}
+import { renderComponentInVDOM } from '../utils/vuetools';
 
 describe('Hello', () => {
   it('should render correct contents', () => {
