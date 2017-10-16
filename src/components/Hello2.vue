@@ -3,6 +3,8 @@
     <div>this is hello2</div>
     <h1>{{ msg }}</h1>
     <h2>{{ msg2 }}</h2>
+    <slot name="slot1"></slot>
+    <slot name="slot2"></slot>
   </div>
 </template>
 
