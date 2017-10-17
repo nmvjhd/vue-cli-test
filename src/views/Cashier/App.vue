@@ -7,9 +7,9 @@
 </template>
 
 <script>
-  import Bundles from './Bundles';
-  import Detail from './Detail';
-  import qrcode from './QRCode';
+  import Bundles from './components/Bundles';
+  import Detail from './components/Detail';
+  import qrcode from './components/QRCode';
   import { getBundleList } from './API';
   import FocusHandler from './FocusHandler';
 
@@ -51,7 +51,7 @@
   };
 </script>
 
-<style  lang="less" rel="stylesheet/less">
+<style lang="less" rel="stylesheet/less">
   .cashier-app{
     display: flex;
 

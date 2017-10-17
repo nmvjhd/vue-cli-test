@@ -24,7 +24,7 @@
   };
 </script>
 
-<style scoped>
+<style lang="less" rel="stylesheet/less" scoped>
   .detail{
   }
 </style>
