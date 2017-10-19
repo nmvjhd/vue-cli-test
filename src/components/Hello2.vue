@@ -17,6 +17,11 @@ export default {
       return `${this.msg}111`;
     },
   },
+  methods: {
+    test() {
+      return this.msg2;
+    },
+  },
 //  data() {
 //    return {
 //      msg: 'Welcome to Your Vue.js App',
@@ -26,22 +31,27 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
+<style  lang="less" rel="stylesheet/less" scoped>
+  .hello2{
+    width: 300px;
+    border: solid 1px black;
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
+    h1, h2 {
+      font-weight: normal;
+    }
 
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
 
-a {
-  color: #42b983;
-}
+    li {
+      display: inline-block;
+      margin: 0 10px;
+    }
+
+    a {
+      color: #42b983;
+    }
+  }
 </style>

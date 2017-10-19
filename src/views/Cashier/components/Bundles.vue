@@ -25,6 +25,7 @@
   .bundles{
     li{
       list-style: none;
+      border: 1px solid rgba(202, 171, 109, 0.5);
     }
   }
 </style>

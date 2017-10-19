@@ -20,7 +20,7 @@ export default class FocusManager {
     this.$el = $el;
     this.focusObjMap = buildFocusObjMap($el);
     this.directionMap = directionMap;
-    this.oldFocusId = null;
+    this.curFocusId = null;
   }
 
   start(initFocusId) {
@@ -28,7 +28,7 @@ export default class FocusManager {
       this.focus(initFocusId);
     }
     this.keyHandler = (e) => {
-      const curFocusId = this.$el.querySelector('.focus').getAttribute('focus-id');
+      const curFocusId = this.curFocusId || this.$el.querySelector('.focus').getAttribute('focus-id');
       const key = e.keyCode;
       let newFocusId = null;
       switch (key) {
@@ -65,12 +65,37 @@ export default class FocusManager {
   }
 
   focus(id) {
-    if (this.oldFocusId) {
-      const $oldEl = this.focusObjMap[this.oldFocusId];
+    if (this.curFocusId) {
+      const $oldEl = this.focusObjMap[this.curFocusId];
       $oldEl.classList.remove('focus');
     }
     const $newEl = this.focusObjMap[id];
     $newEl.classList.add('focus');
-    this.oldFocusId = id;
+    this.curFocusId = id;
   }
+}
+
+export function createList(total, numPerLine) {
+  const list = {};
+  const totalRow = Math.ceil(total / numPerLine);
+  const totalCol = numPerLine;
+  for (let i = 0; i < total; i += 1) {
+    const curRow = Math.floor(i / numPerLine) + 1;
+    const curCol = (i % numPerLine) + 1;
+    const upRow = curRow - 1 > 0 ? curRow - 1 : null;
+    // const downRow = (curRow + 1 <= totalRow) ? curRow + 1 : null;
+    const downIdx = i + 1 + numPerLine;
+    const downRow = ((curRow + 1 <= totalRow) && (downIdx <= total)) ? curRow + 1 : null;
+    const leftCol = curCol - 1 > 0 ? curCol - 1 : null;
+    // const rightCol = (curCol + 1 <= totalCol) ? curCol + 1 : null;
+    const rightIdx = i + 2;
+    const rightCol = ((curCol + 1 <= totalCol) && (rightIdx <= total)) ? curCol + 1 : null;
+    const curId = `${curRow}_${curCol}`;
+    const upId = upRow === null ? null : `${upRow}_${curCol}`;
+    const downId = downRow === null ? null : `${downRow}_${curCol}`;
+    const leftId = leftCol === null ? null : `${curRow}_${leftCol}`;
+    const rightId = rightCol === null ? null : `${curRow}_${rightCol}`;
+    list[curId] = [upId, downId, leftId, rightId];
+  }
+  return list;
 }
