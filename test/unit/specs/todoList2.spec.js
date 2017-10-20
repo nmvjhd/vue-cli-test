@@ -1,7 +1,7 @@
 /**
  * Created by matengfei on 2017/10/19.
  */
-import { getters, mutations, actions } from '@/store/todolist';
+import { getters, mutations, actions } from '@/store/modules/todolist';
 
 import { logExpect } from '../utils/expecttool';
 

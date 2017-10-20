@@ -1,7 +1,7 @@
 /**
  * Created by matengfei on 2017/10/19.
  */
-import { mutations, actions } from '@/store/counter';
+import { mutations, actions } from '@/store/modules/counter';
 
 import { logExpect } from '../utils/expecttool';
 

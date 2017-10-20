@@ -6,12 +6,12 @@
   <div class="todo-list">
     <div class="header">
       <input class="todo-input" v-model="newItem"/>
-      <button class="add-button" @click="onAdd">添加</button>
+      <button class="add-button" @click="add({data: { name: newItem}, getters: $store.getters})">添加</button>
     </div>
     <div class="content">
       <ul class="data-list">
         <li  v-for="item in items" :key="item.id">
-          <todo-item :item="item" @del="onDel(item.id)"></todo-item>
+          <todo-item :item="item" @del="del(item.id)"></todo-item>
         </li>
       </ul>
     </div>
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-  import TodoListData from './DataProvider';
+  import { mapState, mapMutations } from 'vuex';
   import TodoItem from './TodoItem';
 
   export default{
@@ -28,20 +28,13 @@
     data() {
       return {
         newItem: null,
-        items: [],
       };
     },
-    methods: {
-      onAdd() {
-        this.itemManager.add(this.newItem);
-      },
-      onDel(id) {
-        this.items = this.itemManager.del(id);
-      },
+    computed: {
+      ...mapState('todoList', ['items']),
     },
-    created() {
-      this.itemManager = new TodoListData();
-      this.items = this.itemManager.get();
+    methods: {
+      ...mapMutations('todoList', ['add', 'del']),
     },
   };
 </script>

@@ -21,6 +21,7 @@
     <p>
       <router-link to="/todo-list">TodoList</router-link>
       <router-link to="/cashier">Cashier</router-link>
+      <router-link to="/counter">Counter</router-link>
     </p>
     <router-view></router-view>
     <!--<div>{{ count }}</div>-->

@@ -1,7 +1,6 @@
 import Hello from '@/components/Hello';
 import Hello2 from '@/components/Hello2';
 import { createList } from '@/views/Cashier/FocusHandler';
-import store from '@/store';
 
 import { renderComponentInVDOM, renderComponent } from '../utils/vuetool';
 import { logExpect } from '../utils/expecttool';
@@ -47,6 +46,4 @@ describe('Cashier', () => {
     });
   });
 });
-
-describe('Store', () => {});
 

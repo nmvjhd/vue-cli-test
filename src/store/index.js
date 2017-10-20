@@ -4,8 +4,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-import todoList from './todolist';
-import counter from './counter';
+import todoList from './modules/todolist';
+import counter from './modules/counter';
 
 Vue.use(Vuex);
 
