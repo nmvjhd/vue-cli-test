@@ -32,7 +32,7 @@ module.exports = function (config) {
     },
     client: {
       mocha: {
-        timeout: 60000, // not limit test case runtime
+        timeout: 3600000, // not limit test case runtime
       },
     },
   });

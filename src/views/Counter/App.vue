@@ -14,6 +14,8 @@
 <script>
   import { mapState, mapMutations, mapActions } from 'vuex';
 
+  import { add } from './funcs';
+
   export default{
     name: 'counter',
     computed: {
@@ -22,6 +24,7 @@
     methods: {
       ...mapMutations('counter', ['increment', 'decrement']),
       ...mapActions('counter', ['addRandom']),
+      add,
     },
   };
 </script>

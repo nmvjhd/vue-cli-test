@@ -6,7 +6,7 @@
   <div class="todo-list">
     <div class="header">
       <input class="todo-input" v-model="newItem"/>
-      <button class="add-button" @click="add({data: { name: newItem}, getters: $store.getters})">添加</button>
+      <button class="add-button" @click="func">添加</button>
     </div>
     <div class="content">
       <ul class="data-list">
@@ -35,6 +35,17 @@
     },
     methods: {
       ...mapMutations('todoList', ['add', 'del']),
+//      add() {
+//        this.$store.commit('todoList/add')
+//      },
+      func() {
+        this.add({
+          data: {
+            name: this.newItem,
+          },
+          getters: this.$store.getters,
+        });
+      },
     },
   };
 </script>

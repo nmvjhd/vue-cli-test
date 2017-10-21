@@ -25,10 +25,10 @@ export const mutations = {
 };
 
 export const actions = {
-  addRandom(context) {
+  addRandom({ state }) {
     return new Promise((resolve) => {
       setTimeout(() => {
-        context.state.count += Math.ceil(Math.random() * 10); //eslint-disable-line
+        state.count += Math.ceil(Math.random() * 10); //eslint-disable-line
         resolve();
       });
     });

@@ -82,6 +82,7 @@ export function createList(total, numPerLine) {
   for (let i = 0; i < total; i += 1) {
     const curRow = Math.floor(i / numPerLine) + 1;
     const curCol = (i % numPerLine) + 1;
+    const curId = `${curRow}_${curCol}`;
     const upRow = curRow - 1 > 0 ? curRow - 1 : null;
     // const downRow = (curRow + 1 <= totalRow) ? curRow + 1 : null;
     const downIdx = i + 1 + numPerLine;
@@ -90,7 +91,6 @@ export function createList(total, numPerLine) {
     // const rightCol = (curCol + 1 <= totalCol) ? curCol + 1 : null;
     const rightIdx = i + 2;
     const rightCol = ((curCol + 1 <= totalCol) && (rightIdx <= total)) ? curCol + 1 : null;
-    const curId = `${curRow}_${curCol}`;
     const upId = upRow === null ? null : `${upRow}_${curCol}`;
     const downId = downRow === null ? null : `${downRow}_${curCol}`;
     const leftId = leftCol === null ? null : `${curRow}_${leftCol}`;
@@ -99,3 +99,72 @@ export function createList(total, numPerLine) {
   }
   return list;
 }
+
+// export function createKeyMap(total, numPerLine) {
+//   const _keyMap = {};
+//   const totalRow = Math.ceil(total / numPerLine);
+//   const totalCol = numPerLine;
+//   for (let i = 0; i < total; i += 1) {
+//     const curRow = Math.floor(i / numPerLine) + 1;
+//     const curCol = (i % numPerLine) + 1;
+//     const upRow = curRow - 1 > 0 ? curRow - 1 : null;
+//     // const downRow = (curRow + 1 <= totalRow) ? curRow + 1 : null;
+//     const downIdx = i + 1 + numPerLine;
+//     const downRow = ((curRow + 1 <= totalRow) && (downIdx <= total)) ? curRow + 1 : null;
+//     const leftCol = curCol - 1 > 0 ? curCol - 1 : null;
+//     // const rightCol = (curCol + 1 <= totalCol) ? curCol + 1 : null;
+//     const rightIdx = i + 2;
+//     const rightCol = ((curCol + 1 <= totalCol) && (rightIdx <= total)) ? curCol + 1 : null;
+//     const curId = `${curRow}_${curCol}`;
+//     const upId = upRow === null ? null : `${upRow}_${curCol}`;
+//     const downId = downRow === null ? null : `${downRow}_${curCol}`;
+//     const leftId = leftCol === null ? null : `${curRow}_${leftCol}`;
+//     const rightId = rightCol === null ? null : `${curRow}_${rightCol}`;
+//     _keyMap[curId] = [upId, downId, leftId, rightId];
+//   }
+//
+//   const KeyMap = {
+//     use(rule) {
+//       rule(total, numPerLine, _keyMap);
+//       return KeyMap;
+//     },
+//   };
+//
+//   return KeyMap;
+// }
+
+function rightRightDownRule(total, numPerLine, keyMap) {
+  const newKeyMap = Object.assign({}, keyMap);
+  for (let i = 0; i < total; i += 1) {
+    const curRow = Math.floor(i / numPerLine) + 1;
+    const curCol = (i % numPerLine) + 1;
+    const curId = `${curRow}_${curCol}`;
+    if (curCol === numPerLine) {
+      const nextId = `${curRow + 1}_1`;
+      if ((curRow * numPerLine) + 1 <= total) { // nextId exist
+        newKeyMap[curId][3] = nextId;
+      }
+    }
+  }
+  return newKeyMap;
+}
+
+function lastLineDownLeftRule(total, numPerLine, keyMap) {
+  const newKeyMap = Object.assign({}, keyMap);
+  const lastId = `${Math.floor(total / numPerLine) + 1}_${total % numPerLine}`;
+  for (let i = 0; i < total; i += 1) {
+    const curRow = Math.floor(i / numPerLine) + 1;
+    const curCol = (i % numPerLine) + 1;
+    const curId = `${curRow}_${curCol}`;
+    if (curCol === numPerLine) {
+      if ((curRow * numPerLine) + curCol > total) { // downId not exist
+        newKeyMap[curId][1] = lastId;
+      }
+    }
+  }
+  return newKeyMap;
+}
+
+rightRightDownRule(7, 2, createList(7, 2));
+
+lastLineDownLeftRule(7, 2, createList(7, 2));
