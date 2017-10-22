@@ -2,7 +2,7 @@
   <div class="cashier-app">
     <bundles :items="items"></bundles>
     <detail :bundle="curBundle"></detail>
-    <qrcode :url="curQRUrl"></qrcode>
+    <!--<qrcode :url="curQRUrl"></qrcode>-->
   </div>
 </template>
 
