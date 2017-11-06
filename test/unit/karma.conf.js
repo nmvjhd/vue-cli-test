@@ -15,9 +15,13 @@ module.exports = function (config) {
     browsers: ['Chrome'],
     frameworks: ['mocha', 'sinon-chai'/* , 'phantomjs-shim' */],
     reporters: ['spec', 'coverage'],
-    files: ['./index.js'],
+    files: [
+      './index.js',
+      '../../src/assets/style/tv-global.less',
+    ],
     preprocessors: {
       './index.js': ['webpack', 'sourcemap'],
+      '../../src/**/*.less': ['less'],
     },
     webpack: webpackConfig,
     webpackMiddleware: {

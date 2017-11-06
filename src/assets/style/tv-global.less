@@ -1,0 +1,48 @@
+@font-face {
+  font-family: "MyFont";
+  /* 冗余：添加域名字段，解决跨域请求 */
+  src: url('http://cms.ptqy.gitv.tv/favicon.ico#injection-ttf#/fonts/DEFAULT.TTF');
+}
+
+html {
+  font-size: 50px;
+}
+
+@media (min-width: 1280px) {
+  html {
+    font-size: 66.666px;
+  }
+}
+
+@media (min-width: 1920px) {
+  html {
+    font-size: 100px;
+  }
+}
+
+@media (min-width: 3840px) {
+  html {
+    font-size: 200px;
+  }
+}
+
+/**
+ * 忆讯EIONSEN E1 适配
+ */
+@media screen  and (device-height: 672px) and (device-width: 1280px) {
+  html { font-size : 56px}
+}
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body{
+  height: 10.8rem;
+  width: 19.2rem;
+  background: #222328;
+  font-family: MyFont,'HYQiHei 50J','微软雅黑',Verdana;
+  position: relative;
+}

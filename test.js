@@ -46,13 +46,41 @@
 //
 // fn1();
 
-const bbb = 'bbb_';
-const ccc = 'ccc_';
+// // Decorator function for logging
+// function logger(target, name, descriptor) {
+//   // obtain the original function
+//   const fn = descriptor.value;
+//
+//   // create a new function that sandwiches
+//   // the call to our original function between
+//   // two logging statements
+//   const newFn = function () {
+//     console.log('starting %s', name);
+//     fn.apply(target, arguments);
+//     console.log('ending %s', name);
+//   };
+//
+//   // we then overwrite the origin descriptor value
+//   // and return the new descriptor
+//   descriptor.value = newFn; // eslint-disable-line
+//   return descriptor;
+// }
+//
+// const example = {
+//   @logger
+//   logMe() {
+//     console.log('I want to be logged');
+//   },
+// };
+//
+// function add(a, b) {
+//   return a+b;
+// }
 
-function a({aaa, bbb, ccc}) {
-  console.log(aaa, bbb, ccc);
+function add(a, b, c) {
+  return a + b + c;
 }
 
-a({
-  aaa: 'aaa_',
-});
+const add2 = add.bind(null, 2);
+
+console.log(add2(10, 20));
